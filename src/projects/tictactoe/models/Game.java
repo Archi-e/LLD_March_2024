@@ -3,7 +3,7 @@ package projects.tictactoe.models;
 import projects.tictactoe.exceptions.InvalidBotCountException;
 import projects.tictactoe.exceptions.InvalidPlayerCountException;
 import projects.tictactoe.exceptions.InvalidPlayerSymbolException;
-import projects.tictactoe.service.WinningStrategy;
+import projects.tictactoe.service.winningstrategy.WinningStrategy;
 
 import java.util.ArrayList;
 import java.util.HashSet;
