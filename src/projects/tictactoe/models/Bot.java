@@ -7,12 +7,12 @@ import projects.tictactoe.service.botPlayingStrategy.BotPlayingStrategyName;
 public class Bot extends Player{
 
     BotDifficultyLevel botDifficultyLevel;
-    BotPlayingStrategyName botPlayingStrategyName;
+    //BotPlayingStrategyName botPlayingStrategyName;
 
     public Bot(int id, char symbol, BotDifficultyLevel botDifficultyLevel) {
         super(id, "BOT", PlayerType.BOT, symbol);
         this.botDifficultyLevel = botDifficultyLevel;
-        this.botPlayingStrategyName = BotPlayingStrategyName.RANDOM;
+        //this.botPlayingStrategyName = BotPlayingStrategyName.RANDOM;
     }
 
     public BotDifficultyLevel getBotDifficultyLevel() {
@@ -25,6 +25,6 @@ public class Bot extends Player{
 
     @Override
     public Move makeMove(Board board) {
-        return BotPlayingFactory.getBotPlayingStrategy(botPlayingStrategyName).makeMove(board, this);
+        return BotPlayingFactory.getBotPlayingStrategy().makeMove(board, this);
     }
 }

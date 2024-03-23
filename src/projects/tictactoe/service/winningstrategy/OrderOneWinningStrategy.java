@@ -48,25 +48,29 @@ public class OrderOneWinningStrategy implements WinningStrategy{
         if(winner){
             return player;
         }
-        return null;
+        else{
+            return null;
+        }
     }
 
     public boolean checkCorner(int row, int col){
-        return (row == 0 && col == 0)
+        return (
+                (row == 0 && col == 0)
                 || (row == 0 && col == dimension-1)
                 || (row == dimension-1 && col == 0)
-                || (row == dimension-1 && col == dimension-1);
+                || (row == dimension-1 && col == dimension-1)
+        );
     }
 
     public boolean checkLeftDiag(int row, int col){
-        return (row == col);
+        return row == col;
     }
 
     public boolean checkRightDiag(int row, int col){
-        return (row + col) == dimension-1;
+        return ((row + col) == (dimension-1));
     }
 
-    public boolean checkAndUpdateForRowHashMap(int row, Character symbol){
+    public boolean checkAndUpdateForRowHashMap(int row, char symbol){
         HashMap<Character, Integer> rowHashMap = rowHashMapList.get(row);
         if(rowHashMap.containsKey(symbol)){
             rowHashMap.put(symbol, rowHashMap.get(symbol)+1);
@@ -78,8 +82,8 @@ public class OrderOneWinningStrategy implements WinningStrategy{
         return false;
     }
 
-    public boolean checkAndUpdateForColHashMap(int col, Character symbol){
-        HashMap<Character, Integer> colHashMap = rowHashMapList.get(col);
+    public boolean checkAndUpdateForColHashMap(int col, char symbol){
+        HashMap<Character, Integer> colHashMap = colHashMapList.get(col);
         if(colHashMap.containsKey(symbol)){
             colHashMap.put(symbol, colHashMap.get(symbol)+1);
             return (colHashMap.get(symbol) == dimension);
@@ -90,8 +94,7 @@ public class OrderOneWinningStrategy implements WinningStrategy{
         return false;
     }
 
-    public boolean checkAndUpdateForLeftDiagHashMap(Character symbol){
-
+    public boolean checkAndUpdateForLeftDiagHashMap(char symbol){
         if(leftDiagHashMap.containsKey(symbol)){
             leftDiagHashMap.put(symbol, leftDiagHashMap.get(symbol)+1);
             return (leftDiagHashMap.get(symbol) == dimension);
@@ -102,8 +105,7 @@ public class OrderOneWinningStrategy implements WinningStrategy{
         return false;
     }
 
-    public boolean checkAndUpdateForRightDiagHashMap(Character symbol){
-
+    public boolean checkAndUpdateForRightDiagHashMap(char symbol){
         if(rightDiagHashMap.containsKey(symbol)){
             rightDiagHashMap.put(symbol, rightDiagHashMap.get(symbol)+1);
             return (rightDiagHashMap.get(symbol) == dimension);
@@ -114,7 +116,7 @@ public class OrderOneWinningStrategy implements WinningStrategy{
         return false;
     }
 
-    public boolean checkAndUpdateCornerHashMap(Character symbol){
+    public boolean checkAndUpdateCornerHashMap(char symbol){
         if(cornerHashMap.containsKey(symbol)){
             cornerHashMap.put(symbol, cornerHashMap.get(symbol)+1);
             return (cornerHashMap.get(symbol) == 4);
@@ -124,10 +126,6 @@ public class OrderOneWinningStrategy implements WinningStrategy{
         }
         return false;
     }
-
-
-
-
 
 
 }

@@ -26,26 +26,13 @@ public class TicTacToe {
         System.out.println("Do you want a BOT as one player? Enter Y / N");
         String ansBot = sc.next();
 
-        System.out.println("Choose the difficulty level of BOT: EASY / MEDIUM / HARD");
-        String difficultyLevel = sc.next();
+//        System.out.println("Choose the difficulty level of BOT: EASY / MEDIUM / HARD");
+//        String difficultyLevel = sc.next();
 
 
-        if(ansBot.equals("Y")){
-            Player player = null;
-            if(difficultyLevel.equals("EASY")){
-                player = new Bot(id++, 'B', BotDifficultyLevel.EASY);
-            }
-
-            if(difficultyLevel.equals("MEDIUM")){
-                player = new Bot(id++, 'B', BotDifficultyLevel.MEDIUM);
-            }
-
-            if(difficultyLevel.equals("HARD")){
-                player = new Bot(id++, 'B', BotDifficultyLevel.HARD);
-            }
-
-            players.add(player);
-
+        if(ansBot.equalsIgnoreCase("Y")){
+            Player bot = new Bot(id++, 'B', BotDifficultyLevel.HARD);
+            players.add(bot);
         }
 
         while(id < dimension){
@@ -66,7 +53,7 @@ public class TicTacToe {
             gameController.displayBoard(game);
 
             playerIndex++;
-            playerIndex = playerIndex % (players.size());
+            playerIndex = playerIndex % players.size();
 
             Move movePlayed = gameController.makeMove(players.get(playerIndex), game);
             game.getMoves().add(movePlayed);
